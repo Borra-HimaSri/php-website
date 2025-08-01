@@ -1,12 +1,11 @@
 <?php
-session_start();
-$servername = "localhost";
+$host = "caboose.proxy.rlwy.net";
+$port = 15095;
+$database = "railway";
 $username = "root";
-$password = "";
-$dbname = "image_db";
+$password = "HyUTQwwpDBYObcwdYsqGlHWyKPAlJbAz";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($host, $username, $password, $database, $port);
 
 // Check connection
 if ($conn->connect_error) {
