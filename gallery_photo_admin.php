@@ -1,6 +1,7 @@
 <?php 
 
 // Include common admin operations like session check, DB connection, and logout handling
+
 include 'admin_common.php';
 
 // Handle gallery-photo upload

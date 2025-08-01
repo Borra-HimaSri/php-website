@@ -1,11 +1,12 @@
 <?php
-$host = "caboose.proxy.rlwy.net";
+$servername = "caboose.proxy.rlwy.net";
 $port = 15095;
-$database = "railway";
+$dbname = "railway";
 $username = "root";
 $password = "HyUTQwwpDBYObcwdYsqGlHWyKPAlJbAz";
 
-$conn = new mysqli($host, $username, $password, $database, $port);
+// Optional: If you want to use $conn here too, include this:
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
