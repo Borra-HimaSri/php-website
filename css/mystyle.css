@@ -1,0 +1,25 @@
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add padding to content below sticky navbar */
+.sticky + .content {
+    padding-top: 100px; /* Adjust based on navbar height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 80px; /* Responsive logo size */
+    }
+    
+}
+
+
+
+
+  

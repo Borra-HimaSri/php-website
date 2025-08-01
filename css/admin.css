@@ -1,0 +1,131 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and global font styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../img/background.jpg);
+    background-color: #f9f1f7;  /* Light pink background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header styling */
+.header {
+    background-color: #FF91A4;  /* Light pink header */
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* Container for navigation and logout form */
+.container {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+}
+
+.flex-item {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #f2f2f2;   /* Light pink text */
+    background-color: #FF91A4;   /* Light blue background */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.flex-item:hover {
+    background-color: #2aafb1;  /* Slightly darker blue on hover */
+    color: #fff;
+}
+
+/* Logout button styling */
+.logout-form {
+    text-align: center;
+}
+
+.logout-form button {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    color: white;
+    background-color: #FF91A4;  /* Light pink button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-form button:hover {
+    background-color: #FF5E6A;  /* Darker pink on hover */
+}
+
+/* Styling for square blocks for events/news */
+.event-block {
+    background-color: #FCE1E1;  /* Very light pink background for blocks */
+    border: 2px solid #FF91A4;  /* Light pink border */
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-block:hover {
+    transform: scale(1.05);  /* Slightly enlarge on hover */
+}
+
+.event-block h3 {
+    font-size: 1.5rem;
+    color: #FF91A4;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flex-item {
+        margin-bottom: 15px;
+    }
+
+    .event-block {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}

@@ -1,0 +1,112 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../img/background.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Forgot Password container */
+.forgot-password-container {
+    background: #ffffff; /* White background */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Heading */
+.forgot-password-container h2 {
+    font-size: 24px;
+    color: #ff69b4; /* Hot pink */
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+.forgot-password-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #87cefa; /* Light blue */
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.forgot-password-container input[type="email"]:focus {
+    border-color: #ff69b4; /* Hot pink on focus */
+}
+
+/* Buttons */
+.forgot-password-container button {
+    width: 100%;
+    padding: 10px;
+    background: #87cefa; /* Light blue */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* White text */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.forgot-password-container button:hover {
+    background: #ff69b4; /* Hot pink on hover */
+}
+
+/* Error message */
+.forgot-password-container p[style="color: red;"] {
+    color: #ff6347; /* Tomato red */
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .forgot-password-container {
+        padding: 20px 30px;
+    }
+
+    .forgot-password-container h2 {
+        font-size: 22px;
+    }
+
+    .forgot-password-container button {
+        font-size: 15px;
+    }
+
+    .forgot-password-container input[type="email"] {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .forgot-password-container {
+        padding: 15px 20px;
+    }
+
+    .forgot-password-container h2 {
+        font-size: 20px;
+    }
+
+    .forgot-password-container input[type="email"] {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .forgot-password-container button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

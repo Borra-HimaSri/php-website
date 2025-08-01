@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F8F4F9; /* Lighter background */
+    color: #4A4A4A; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../img/background.jpg);
+}
+
+h2, h3 {
+    color: #D36BB7; /* Pinkish */
+    text-align: center;
+}
+.admin-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+   
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.admin-nav a {
+    text-decoration: none;
+}
+
+.admin-nav button {
+    padding: 10px 15px;
+    background-color: #87CEEB; /* Sky Blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.admin-nav button:hover {
+    background-color: #48C9E6; /* Lighter Sky Blue */
+}
+
+.logout-btn {
+    background-color: #FF6347; /* Tomato for Logout */
+}
+
+.logout-btn:hover {
+    background-color: #E74C3C; /* Darker Tomato */
+}
+
+/* Form Styles */
+form {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFFFFF; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    font-size: 1.1em;
+    margin: 10px 0 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+form input[type="file"] {
+    padding: 5px;
+    background-color: #E6D9E5; /* Light pinkish */
+    border: 1px solid #D36BB7; /* Pinkish border */
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #A0B8F4; /* Medium Blue */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+form button:hover {
+    background-color: #7A98D5; /* Darker bluish shade */
+}
+
+/* Edit Form Styles */
+form h2 {
+    margin-bottom: 20px;
+}
+
+/* Gallery Container */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.gallery-container div {
+    text-align: center;
+    background-color: #FFFFFF; /* White background */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.gallery-container form button {
+    width: 100px;
+    margin: 5px;
+    background-color: #FF91A4; /* Light Pinkish */
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.gallery-container form button:hover {
+    background-color: #D36BB7; /* Darker Pinkish */
+}
+
+button[type="submit"]:not(.delete) {
+    background-color: #FF91A4; /* Light Pinkish */
+}
+
+button[type="submit"]:not(.delete):hover {
+    background-color: #D36BB7; /* Darker Pinkish */
+}
+
+button[type="submit"].delete {
+    background-color: #F6A6C4; /* Light Pinkish */
+}
+
+button[type="submit"].delete:hover {
+    background-color: #D36BB7; /* Darker Pinkish */
+}
