@@ -215,6 +215,12 @@
                         <h6>🌈  On-Demand Parent Support</h6>
                         <p>Providing easy access to teachers and staff through direct communication channels for any questions or support needed by parents.</p>
                     </div>
+                        <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
+    </style>
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">

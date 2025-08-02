@@ -214,6 +214,12 @@
                         <h6>🌈 Stage and Event Opportunities</h6>
                         <p>Annual days, sports events, and performances allow children to shine and gain confidence.</p>
                     </div>
+                        <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
+    </style>
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">

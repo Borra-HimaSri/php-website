@@ -207,6 +207,12 @@
                         <p> We have a space where parents can easily access updates, newsletters, and important notices. This ensures parents are always informed about their child’s progress and upcoming events, fostering an open and transparent line of communication between home and school.</p>
                         
                     </div>
+                        <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
+    </style>
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
