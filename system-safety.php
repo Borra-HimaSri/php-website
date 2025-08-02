@@ -284,26 +284,31 @@
                         <p>At <b>Smart Kids</b>, we go above and beyond to ensure a safe, healthy, and secure environment where children can thrive. Join us for an education where safety is as important as learning, and where every child is cared for with the utmost attention and care.</p>
                     
                     </div>
-                    
-                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
+                    <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
                                     <img src="img/saf1.jpeg" class="img-fluid w-100" alt="Image 1">
                                 </div> 
                             </div>            
-                        </div><br>
+                        </div><br><br><br>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
                                     <img src="img/saf2.jpeg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
-                        </div><br>
-                        <div class="program-item rounded" style="margin-top: 20px;">                                            
+                        </div><br><br><br>
+                        <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/saf3.jpeg" class="img-fluid w-100" alt="Image 3">
+                                    <img src="img/saf3.jpeg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
                         </div>
