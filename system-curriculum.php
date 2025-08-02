@@ -282,21 +282,21 @@
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/c1.png" class="img-fluid w-100" alt="Image 1">
+                                    <img src="img/cur1.png" class="img-fluid w-100" alt="Image 1">
                                 </div> 
                             </div>            
                         </div><br>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/c1.png" class="img-fluid w-100" alt="Image 2">
+                                    <img src="img/cur2.png" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
                         </div><br>
                         <div class="program-item rounded" style="margin-top: 20px;">                                            
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/c1.png" class="img-fluid w-100" alt="Image 3">
+                                    <img src="img/cur3.png" class="img-fluid w-100" alt="Image 3">
                                 </div> 
                             </div>            
                         </div>
