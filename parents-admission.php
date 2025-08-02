@@ -222,21 +222,21 @@
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-1.jpeg" class="img-fluid w-100" alt="Image 1">
+                                    <img src="img/ad3.jpeg" class="img-fluid w-100" alt="Image 1">
                                 </div> 
                             </div>            
                         </div>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-2.jpeg" class="img-fluid w-100" alt="Image 2">
+                                    <img src="img/ad1.jpeg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
                         </div>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-3.jpeg" class="img-fluid w-100" alt="Image 3">
+                                    <img src="img/ad2.jpeg" class="img-fluid w-100" alt="Image 3">
                                 </div> 
                             </div>            
                         </div>
