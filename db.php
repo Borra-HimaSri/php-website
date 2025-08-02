@@ -5,11 +5,8 @@ $dbname = "railway";
 $username = "root";
 $password = "HyUTQwwpDBYObcwdYsqGlHWyKPAlJbAz";
 
-// Optional: If you want to use $conn here too, include this:
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$conn = mysqli_init();
+$conn->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
+$conn->real_connect($servername, $username, $password, $dbname, $port);
 ?>
