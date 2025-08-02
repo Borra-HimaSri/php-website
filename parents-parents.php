@@ -225,7 +225,7 @@
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/par4.jpg" class="img-fluid w-100" alt="Image 1">
+                                    <img src="img/par4.jpeg" class="img-fluid w-100" alt="Image 1">
                                 </div> 
                             </div>            
                         </div>
