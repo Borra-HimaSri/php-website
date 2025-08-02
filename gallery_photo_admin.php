@@ -16,7 +16,9 @@ Configuration::instance([
     'url' => ['secure' => true]
 ]);
 
-$cloudinary = new Cloudinary();
+$cloudinary = new Cloudinary(Configuration::instance());
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     $category = 'gallery-photo';
