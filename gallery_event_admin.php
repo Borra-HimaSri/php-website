@@ -56,50 +56,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['delete'])) {
-        $imageId = (int)$_POST['delete'];
+    $imageId = (int)$_POST['delete'];
 
-        $stmt = $conn->prepare("SELECT image_path FROM images WHERE id = ?");
+    $stmt = $conn->prepare("SELECT image_path FROM images WHERE id = ?");
+    $stmt->bind_param("i", $imageId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows) {
+        $stmt->close();
+        $stmt = $conn->prepare("DELETE FROM images WHERE id = ?");
         $stmt->bind_param("i", $imageId);
         $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows) {
-            $stmt = $conn->prepare("DELETE FROM images WHERE id = ?");
-$stmt->bind_param("i", $imageId);
-$stmt->execute();
-$stmt->close();
-
-        }
         $stmt->close();
+    } else {
+        // Don't call $stmt->close() again if already closed
     }
 
-    if (isset($_POST['edit'])) {
-        $editId = (int)$_POST['edit'];
-        $stmt = $conn->prepare("SELECT * FROM images WHERE id = ?");
+    header("Location: gallery_event_admin.php");
+    exit;
+}
+
+
+if (isset($_POST['edit'])) {
+    $editId = (int)$_POST['edit'];
+    $stmt = $conn->prepare("SELECT * FROM images WHERE id = ?");
+    if ($stmt) {
         $stmt->bind_param("i", $editId);
         $stmt->execute();
         $result = $stmt->get_result();
-        if ($result->num_rows) {
+        if ($result && $result->num_rows) {
             $editRow = $result->fetch_assoc();
         }
         $stmt->close();
     }
+}
 
-    if (isset($_POST['update'])) {
-        $updateId = (int)$_POST['update'];
-        $eventName = $_POST['event_name'];
-        $eventDate = date("M Y", strtotime($_POST['event_date']));
-        $eventTime = $_POST['event_hour'] . ':' . $_POST['event_minute'] . ' ' . $_POST['event_ampm'];
-        $eventLocation = $_POST['event_location'];
-        $eventDescription = $_POST['event_description'];
+if (isset($_POST['update'])) {
+    $updateId = (int)$_POST['update'];
+    $eventName = $_POST['event_name'];
+    $eventDate = date("M Y", strtotime($_POST['event_date']));
+    $eventTime = $_POST['event_hour'] . ':' . $_POST['event_minute'] . ' ' . $_POST['event_ampm'];
+    $eventLocation = $_POST['event_location'];
+    $eventDescription = $_POST['event_description'];
 
-        $stmt = $conn->prepare("UPDATE images SET event_name = ?, event_date = ?, event_time = ?, event_location = ?, event_description = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE images SET event_name = ?, event_date = ?, event_time = ?, event_location = ?, event_description = ? WHERE id = ?");
+    if ($stmt) {
         $stmt->bind_param("sssssi", $eventName, $eventDate, $eventTime, $eventLocation, $eventDescription, $updateId);
         $stmt->execute();
         $stmt->close();
-
-        header("Location: gallery_event_admin.php");
-        exit;
     }
+
+    header("Location: gallery_event_admin.php");
+    exit;
+}
+
 }
 ?>
 
