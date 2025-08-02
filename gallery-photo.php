@@ -87,35 +87,35 @@ if ($conn->connect_error) {
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="about.html" class="dropdown-item">About Smartkids</a>
-                                        <a href="about-mission.html" class="dropdown-item">Our Mission and vision</a>
+                                        <a href="about.php" class="dropdown-item">About Smartkids</a>
+                                        <a href="about-mission.php" class="dropdown-item">Our Mission and vision</a>
                                     </div>
                                 </div>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our System</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="system-curriculum.html" class="dropdown-item">Smartkids Curriculum</a>
-                                        <a href="system-safety.html" class="dropdown-item">Safety and Security</a>
-                                        <a href="system-activities.html" class="dropdown-item">Activities at Smartkids</a>
-                                        <a href="system-teachers.html" class="dropdown-item">Our Teachers</a>
+                                        <a href="system-curriculum.php" class="dropdown-item">Smartkids Curriculum</a>
+                                        <a href="system-safety.php" class="dropdown-item">Safety and Security</a>
+                                        <a href="system-activities.php" class="dropdown-item">Activities at Smartkids</a>
+                                        <a href="system-teachers.php" class="dropdown-item">Our Teachers</a>
                                     </div>
                                 </div>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Programs</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="program-playgroup.html" class="dropdown-item">Play group</a>
-                                        <a href="program-nursery.html" class="dropdown-item">Nursery</a>
-                                        <a href="program-JRKG.html" class="dropdown-item">JR KG</a>
-                                        <a href="program-SRKG.html" class="dropdown-item">SR KG</a>
+                                        <a href="program-playgroup.php" class="dropdown-item">Play group</a>
+                                        <a href="program-nursery.php" class="dropdown-item">Nursery</a>
+                                        <a href="program-JRKG.php" class="dropdown-item">JR KG</a>
+                                        <a href="program-SRKG.php" class="dropdown-item">SR KG</a>
                                     </div>
                                 </div>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Parents</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="parents-whystarkids.html" class="dropdown-item">Why Smartkids</a>
-                                        <a href="parents-parents.html" class="dropdown-item">Parents as Partners</a>
-                                        <a href="parents-facilities.html" class="dropdown-item">Facilities</a>
-                                        <a href="parents-admission.html" class="dropdown-item">Admission Information</a>
+                                        <a href="parents-whystarkids.php" class="dropdown-item">Why Smartkids</a>
+                                        <a href="parents-parents.php" class="dropdown-item">Parents as Partners</a>
+                                        <a href="parents-facilities.php" class="dropdown-item">Facilities</a>
+                                        <a href="parents-admission.php" class="dropdown-item">Admission Information</a>
                                     </div>
                                 </div>
 
