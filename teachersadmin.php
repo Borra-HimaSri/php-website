@@ -3,6 +3,8 @@ include 'db.php';
 
 include 'admin_common.php';
 require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 use Cloudinary\Configuration\Configuration;
 use Cloudinary\Api\Upload\UploadApi;
@@ -13,11 +15,12 @@ ini_set('display_errors', 1);
 
 // Cloudinary config
 Configuration::instance([
-  'cloud' => [
-    'cloud_name' => 'dyvs4ugkk',
-    'api_key'    => '567619791139426',
-    'api_secret' => 'ZmSo5zZoMgkr7LcGz_QHPRm7vVI'],
-  'url' => ['secure' => true]
+    'cloud' => [
+        'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'],
+        'api_key'    => $_ENV['CLOUDINARY_API_KEY'],
+        'api_secret' => $_ENV['CLOUDINARY_API_SECRET'],
+    ],
+    'url' => ['secure' => true]
 ]);
 
 // Upload logic
