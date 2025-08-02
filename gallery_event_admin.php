@@ -1,4 +1,11 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+ob_start();
+
+// add this just after ob_start if not already included
+
 include 'admin_common.php';
 require 'vendor/autoload.php'; // Cloudinary autoload
 
@@ -56,7 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows) {
-            $conn->prepare("DELETE FROM images WHERE id = ?")->bind_param("i", $imageId)->execute();
+            $stmt = $conn->prepare("DELETE FROM images WHERE id = ?");
+$stmt->bind_param("i", $imageId);
+$stmt->execute();
+$stmt->close();
+
         }
         $stmt->close();
     }

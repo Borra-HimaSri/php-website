@@ -1,26 +1,28 @@
 <?php
+// DO NOT ADD ANYTHING ABOVE THIS LINE! No spaces, no lines, no BOM.
+
 include 'db.php';
-// Start session to manage user login status
 session_start();
 
-// Check if the user is logged in
+// Redirect if not logged in
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header('Location: login.php'); // Redirect to login page if not logged in
+    header('Location: login.php');
     exit();
 }
 
-
-
-
-
+// Check DB connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    header("Location: db_error.php");
+    exit();
+    // OR log silently
+    error_log("Database connection failed: " . $conn->connect_error);
+    exit("Database connection failed.");
 }
 
-// Logout
+// Logout logic
 if (isset($_POST['logout'])) {
     session_destroy();
-    header('Location: login.php'); // Redirect to login page after logout
+    header('Location: login.php');
     exit();
 }
-?>  
+?>
