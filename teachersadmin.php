@@ -90,25 +90,18 @@ $result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
 </form>
 
 <h2>All Teachers</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Photo</th>
-        <th>Name</th>
-        <th>Delete</th>
-    </tr>
+<h2>All Teachers</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
     <?php while ($row = $result->fetch_assoc()): ?>
-    <tr>
-        <td><?= $row['id'] ?></td>
-        <td>
-  <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" style="height:60px; width:60px; object-fit:cover; border-radius: 50%;">
-</td>
-
-        <td><?= htmlspecialchars($row['name']) ?></td>
-        <td><a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Delete this teacher?')">Delete</a></td>
-    </tr>
+        <div style="width: 100px; text-align: center;">
+            <img src="<?= htmlspecialchars($row['image']) ?>" alt="Teacher" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;"><br><br>
+            <a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Delete this teacher?')">
+                <button>Delete</button>
+            </a>
+        </div>
     <?php endwhile; ?>
-</table>
+</div>
+
 
 </body>
 </html>
