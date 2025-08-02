@@ -535,50 +535,9 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
                 </div>
             </div>
 
-            <!-- Testimonial 4 -->
-            <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                <div class="p-4 position-relative">
-                    <div class="border-top border-primary mt-4 pt-3">
-                        <div class="video-container">
-                            <video>
-                                <source src="img/testimonial4.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="play-button"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
 
-            <!-- Testimonial 5 -->
-            <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                <div class="p-4 position-relative">
-                    <div class="border-top border-primary mt-4 pt-3">
-                        <div class="video-container">
-                            <video>
-                                <source src="img/testimonial5.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="play-button"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 6 -->
-            <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                <div class="p-4 position-relative">
-                    <div class="border-top border-primary mt-4 pt-3">
-                        <div class="video-container">
-                            <video>
-                                <source src="img/testimonial6.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="play-button"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
 
         </div>
     </div>
