@@ -90,7 +90,7 @@ $result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
 </form>
 
 <h2>All Teachers</h2>
-<h2>All Teachers</h2>
+
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
     <?php while ($row = $result->fetch_assoc()): ?>
         <div style="width: 100px; text-align: center;">
