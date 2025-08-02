@@ -479,8 +479,6 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
         });
     });
 </script>
-
-
 <div class="container-fluid testimonial py-5">
     <div class="container py-5">
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
@@ -490,6 +488,8 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
             <h1 class="mb-5 display-3">Parents Say About Us</h1>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.3s">
+
+            <!-- Testimonial 1 -->
             <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
                 <div class="p-4 position-relative">
                     <div class="border-top border-primary mt-4 pt-3">
@@ -503,6 +503,8 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
                     </div>
                 </div>
             </div>
+
+            <!-- Testimonial 2 -->
             <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
                 <div class="p-4 position-relative">
                     <div class="border-top border-primary mt-4 pt-3">
@@ -516,6 +518,8 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
                     </div>
                 </div>
             </div>
+
+            <!-- Testimonial 3 -->
             <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
                 <div class="p-4 position-relative">
                     <div class="border-top border-primary mt-4 pt-3">
@@ -529,9 +533,56 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
                     </div>
                 </div>
             </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
+                <div class="p-4 position-relative">
+                    <div class="border-top border-primary mt-4 pt-3">
+                        <div class="video-container">
+                            <video>
+                                <source src="img/testimonial4.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
+                <div class="p-4 position-relative">
+                    <div class="border-top border-primary mt-4 pt-3">
+                        <div class="video-container">
+                            <video>
+                                <source src="img/testimonial5.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
+                <div class="p-4 position-relative">
+                    <div class="border-top border-primary mt-4 pt-3">
+                        <div class="video-container">
+                            <video>
+                                <source src="img/testimonial6.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
 <!-- Testimonial End -->
 
 
