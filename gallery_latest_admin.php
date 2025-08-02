@@ -16,7 +16,7 @@ Configuration::instance([
     'url' => ['secure' => true]
 ]);
 
-$cloudinary = new Cloudinary();
+$cloudinary = new Cloudinary(Configuration::instance());
 
 // Upload Image
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
