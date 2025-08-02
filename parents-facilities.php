@@ -211,28 +211,28 @@
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-1.jpg" class="img-fluid w-100" alt="Image 1">
+                                    <img src="img/fac1.jpeg" class="img-fluid w-100" alt="Image 1">
                                 </div> 
                             </div>            
                         </div>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-2.jpg" class="img-fluid w-100" alt="Image 2">
+                                    <img src="img/fac2.jpeg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
                         </div>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-2.jpg" class="img-fluid w-100" alt="Image 2">
+                                    <img src="img/fac3.jpeg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
                         </div>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-3.jpg" class="img-fluid w-100" alt="Image 3">
+                                    <img src="img/fac4.jpeg" class="img-fluid w-100" alt="Image 3">
                                 </div> 
                             </div>            
                         </div>
