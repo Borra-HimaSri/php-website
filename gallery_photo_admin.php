@@ -18,7 +18,9 @@ Configuration::instance([
     'url' => ['secure' => true]
 ]);
 
-$cloudinary = new Cloudinary();
+
+$cloudinary = new Cloudinary(Configuration::instance());
+
 
 
 
