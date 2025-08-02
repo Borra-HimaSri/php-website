@@ -1,66 +1,80 @@
 <?php
-// Include common admin operations like session check, DB connection, and logout handling
-include 'admin_common.php';
+ob_start();
+include 'admin_common.php'; // Make sure this sets up $conn
 
-// Handle gallery-latest upload
+require 'vendor/autoload.php';
+use Cloudinary\Cloudinary;
+use Cloudinary\Configuration\Configuration;
+
+// Cloudinary Configuration
+Configuration::instance([
+    'cloud' => [
+        'cloud_name' => 'dyvs4ugkk',
+        'api_key'    => '567619791139426',
+        'api_secret' => 'ZmSo5zZoMgkr7LcGz_QHPRm7vVI'
+    ],
+    'url' => ['secure' => true]
+]);
+
+$cloudinary = new Cloudinary();
+
+// Upload Image
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-    $imagePath = 'uploads/' . uniqid('img_', true) . '-' . basename($_FILES['image']['name']);
-    $category = 'gallery-latest';
-    $newsName = $_POST['news_name'];
-    $newsDescription = $_POST['news_description'];
-    $newsDate = $_POST['news_date'];
+    $category = 'gallery-photo';
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
-        $sql = "INSERT INTO images (image_path, category, news_name, news_description, news_date)
-                VALUES ('$imagePath', '$category', '$newsName', '$newsDescription', '$newsDate')";
-        if ($conn->query($sql)) {
-            header("Location: gallery_latest_admin.php");
-            exit;
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        try {
+            $upload = $cloudinary->uploadApi()->upload($_FILES['image']['tmp_name'], [
+                'folder' => 'smartkids/gallery'
+            ]);
+            $imageUrl = $upload['secure_url'];
+
+            $stmt = $conn->prepare("INSERT INTO images (image_path, category) VALUES (?, ?)");
+            $stmt->bind_param("ss", $imageUrl, $category);
+
+            if ($stmt->execute()) {
+                $stmt->close();
+                header("Location: gallery_photo_admin.php");
+                exit;
+            } else {
+                echo "Database insert failed!";
+                $stmt->close();
+            }
+        } catch (Exception $e) {
+            echo "Image upload error: " . $e->getMessage();
         }
     } else {
         echo "Image upload failed!";
     }
 }
 
-// Handle image deletion
+// Delete Image
 if (isset($_POST['delete'])) {
-    $imageId = $_POST['delete'];
-    $result = $conn->query("SELECT image_path FROM images WHERE id = $imageId");
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $imagePathToDelete = $row['image_path'];
-        $conn->query("DELETE FROM images WHERE id = $imageId");
-        if (file_exists($imagePathToDelete)) {
-            unlink($imagePathToDelete);
-        }
-    }
-}
+    $imageId = intval($_POST['delete']);
 
-// Handle editing
-if (isset($_POST['edit'])) {
-    $editId = $_POST['edit'];
-    $result = $conn->query("SELECT * FROM images WHERE id = $editId");
-    $editRow = $result->fetch_assoc();
-}
+    $stmt = $conn->prepare("SELECT image_path FROM images WHERE id = ?");
+    $stmt->bind_param("i", $imageId);
+    $stmt->execute();
+    $stmt->bind_result($imagePathToDelete);
 
-// Handle updates
-if (isset($_POST['update'])) {
-    $updateId = $_POST['update'];
-    $newsName = $_POST['news_name'];
-    $newsDescription = $_POST['news_description'];
-    $newsDate = $_POST['news_date'];
+    if ($stmt->fetch()) {
+        $stmt->close();
 
-    $sql = "UPDATE images SET 
-                news_name = '$newsName', 
-                news_description = '$newsDescription', 
-                news_date = '$newsDate' 
-            WHERE id = $updateId";
-    if ($conn->query($sql)) {
-        header("Location: gallery_latest_admin.php");
-        exit;
+        // Optional: Extract public ID from Cloudinary URL if you want to delete from Cloudinary too
+        // $publicId = basename(parse_url($imagePathToDelete, PHP_URL_PATH), '.' . pathinfo($imagePathToDelete, PATHINFO_EXTENSION));
+        // $cloudinary->uploadApi()->destroy('smartkids/gallery/' . $publicId);
+
+        $stmtDel = $conn->prepare("DELETE FROM images WHERE id = ?");
+        $stmtDel->bind_param("i", $imageId);
+        $stmtDel->execute();
+        $stmtDel->close();
+    } else {
+        $stmt->close();
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
