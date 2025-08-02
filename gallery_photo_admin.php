@@ -1,92 +1,67 @@
 <?php
 require 'vendor/autoload.php';
-include 'admin_common.php';
-
 use Cloudinary\Cloudinary;
-use Cloudinary\Configuration\Configuration;
 
-// Cloudinary setup
-Configuration::instance([
+$cloudinary = new Cloudinary([
     'cloud' => [
         'cloud_name' => 'dyvs4ugkk',
         'api_key'    => '567619791139426',
         'api_secret' => 'ZmSo5zZoMgkr7LcGz_QHPRm7vVI',
     ],
-    'url' => ['secure' => true]
+    'url' => [
+        'secure' => true
+    ]
 ]);
 
-$cloudinary = new Cloudinary();
+include("db.php");
 
-// Handle upload
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-    if (isset($_FILES['image']) && $_FILES['image']['tmp_name']) {
-        try {
-            $uploadResult = $cloudinary->uploadApi()->upload($_FILES['image']['tmp_name']);
-            $imageUrl = $uploadResult['secure_url'];
-            $category = 'gallery-photo';
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+    $file_tmp = $_FILES['photo']['tmp_name'];
+    $file_name = $_FILES['photo']['name'];
 
-            $sql = "INSERT INTO images (image_path, category) VALUES ('$imageUrl', '$category')";
-            if ($conn->query($sql)) {
-                header("Location: gallery_photo_admin.php");
-                exit;
-            }
-        } catch (Exception $e) {
-            echo "Upload failed: " . $e->getMessage();
+    try {
+        $result = $cloudinary->uploadApi()->upload($file_tmp, [
+            'folder' => 'smartkidsplayschool',
+            'public_id' => pathinfo($file_name, PATHINFO_FILENAME),
+            'overwrite' => true,
+        ]);
+
+        $image_url = $result['secure_url'];
+
+        $sql = "INSERT INTO gallery_photos (image_url) VALUES ('$image_url')";
+        if ($conn->query($sql) === TRUE) {
+            echo "Photo uploaded and saved successfully.<br>";
+        } else {
+            echo "Database error: " . $conn->error;
         }
-    }
-}
-
-// Handle deletion
-if (isset($_POST['delete'])) {
-    $imageId = $_POST['delete'];
-    $result = $conn->query("SELECT image_path FROM images WHERE id = $imageId");
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $conn->query("DELETE FROM images WHERE id = $imageId");
-        // Optional: Cloudinary deletion via API
+    } catch (Exception $e) {
+        echo "Upload failed: " . $e->getMessage();
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Gallery Photo</title>
-    <link rel="stylesheet" href="css/gallery.css">
-    <script>
-        function confirmDelete() {
-            return confirm("Are you sure you want to delete this image?");
-        }
-    </script>
+    <title>Admin Upload Photo</title>
 </head>
 <body>
-<div class="admin-nav">
-    <a href="gallery_photo_admin.php"><button>Gallery</button></a>
-    <a href="gallery_event_admin.php"><button>Events</button></a>
-    <a href="gallery_latest_admin.php"><button>News</button></a>
-    <a href="admin.php"><button>Admin Page</button></a>
-</div>
+    <h2>Upload Gallery Photo</h2>
+    <form action="gallery_photo_admin.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" required>
+        <button type="submit">Upload</button>
+    </form>
 
-<h2>Upload Photos to the Gallery Page</h2>
-<form action="gallery_photo_admin.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" required>
-    <button type="submit" name="upload">Upload Image</button>
-</form>
-
-<div class="gallery-container">
-    <?php
-    $result = $conn->query("SELECT * FROM images WHERE category='gallery-photo'");
-    while ($row = $result->fetch_assoc()) {
-        echo '<div class="gallery-item">
-                <img src="' . $row['image_path'] . '" alt="Uploaded Image">
-                <form action="gallery_photo_admin.php" method="post" onsubmit="return confirmDelete();">
-                    <button type="submit" name="delete" value="' . $row['id'] . '">Delete</button>
-                </form>
-              </div>';
-    }
-    ?>
-</div>
+    <h3>Uploaded Photos</h3>
+    <div style="display:flex; flex-wrap: wrap;">
+        <?php
+        $result = $conn->query("SELECT * FROM gallery_photos ORDER BY id DESC");
+        while ($row = $result->fetch_assoc()) {
+            echo "<div style='margin:10px;'>
+                    <img src='" . $row['image_url'] . "' style='width:200px; height:auto; border:1px solid #ccc; padding:5px;'>
+                  </div>";
+        }
+        ?>
+    </div>
 </body>
 </html>
