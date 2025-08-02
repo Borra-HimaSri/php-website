@@ -1,5 +1,7 @@
 <?php 
 include 'db.php';
+
+include 'admin_common.php';
 require 'vendor/autoload.php';
 
 use Cloudinary\Configuration\Configuration;

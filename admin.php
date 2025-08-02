@@ -52,8 +52,8 @@ if (isset($_POST['logout'])) {
             <div class="flex-container">
                 <a href="gallery_photo_admin.php" class="flex-item">Gallery</a>
                 <a href="gallery_event_admin.php" class="flex-item">Events</a>
-                <a href="gallery_latest_admin.php" class="flex-item">News</a>
                 <a href="teachersadmin.php" class="flex-item">Teachers</a>
+                
             </div>
         </div>
 
