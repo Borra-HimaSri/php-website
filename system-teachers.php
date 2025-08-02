@@ -253,7 +253,7 @@ $result = $conn->query($sql);
     <!-- Service End -->
 
 
-        <!-- Team Start-->
+<!-- Team Start-->
 <div class="container-fluid team py-5">
     <div class="container py-5">
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -265,7 +265,7 @@ $result = $conn->query($sql);
                 <?php while($row = $result->fetch_assoc()): ?>
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
                         <div class="team-item border border-primary img-border-radius overflow-hidden">
-                            <img src="uploads/<?php echo htmlspecialchars($row['image']); ?>" class="img-fluid w-100" alt="" style="height: 250px; object-fit: contain; object-position: center;">
+                            <img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-fluid w-100" alt="<?php echo htmlspecialchars($row['name']); ?>" style="height: 250px; object-fit: contain; object-position: center;">
                             <div class="team-content text-center py-3">
                                 <h4 class="text-primary"><?php echo htmlspecialchars($row['name']); ?></h4>
                                 <p class="text-muted mb-2"></p>
@@ -280,6 +280,7 @@ $result = $conn->query($sql);
     </div>
 </div>
 <!-- Team End-->
+
 
         <!--Teachers End -->
         
