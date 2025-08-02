@@ -20,7 +20,6 @@ if ($conn->connect_error) {
         <meta content="" name="description">
 
         <!-- Google Web Fonts -->
-          <link rel="icon" type="image/png" href="img/logo.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
@@ -124,7 +123,7 @@ if ($conn->connect_error) {
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                         <a href="gallery-photo.php" class="dropdown-item">photo Gallery</a>
-                                        <a href="gallery-latest.php" class="dropdown-item">Latest news</a>
+                                       
                                         <a href="gallery-event.php" class="dropdown-item">Events</a>   
                                     </div>
                                 </div>
@@ -199,27 +198,7 @@ if ($conn->connect_error) {
         </div>
         <div class="row g-5 justify-content-center">
             <!-- Static Images -->
-            <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                <div class="blog-item rounded-bottom">
-                    <div class="blog-img overflow-hidden position-relative img-border-radius">
-                        <img src="img/photo-1.jpeg" class="img-fluid w-100" alt="Image" style="height: 300px; object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeIn" data-wow-delay="0.3s">
-                <div class="blog-item rounded-bottom">
-                    <div class="blog-img overflow-hidden position-relative img-border-radius">
-                        <img src="img/photo-2.jpeg" class="img-fluid w-100" alt="Image" style="height: 300px; object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeIn" data-wow-delay="0.5s">
-                <div class="blog-item rounded-bottom">
-                    <div class="blog-img overflow-hidden position-relative img-border-radius">
-                        <img src="img/photo-3.jpeg" class="img-fluid w-100" alt="Image" style="height: 300px; object-fit: cover;">
-                    </div>
-                </div>
-            </div>
+
             
             <!-- Dynamically Fetched Images from Database -->
             <?php

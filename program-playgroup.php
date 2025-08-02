@@ -114,7 +114,7 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                         <a href="gallery-photo.php" class="dropdown-item">photo Gallery</a>
-                                        <a href="gallery-latest.php" class="dropdown-item">Latest news</a>
+                                   
                                         <a href="gallery-event.php" class="dropdown-item">Events</a>   
                                     </div>
                                 </div>
