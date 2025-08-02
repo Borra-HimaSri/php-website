@@ -227,19 +227,24 @@ if (isset($_POST['update'])) {
 
 <div class="gallery-container">
     <?php
-    $result = $conn->query("SELECT * FROM images WHERE category='gallery-event'");
-    while ($row = $result->fetch_assoc()) {
-        echo '<div style="display:inline-block; margin:10px; text-align:center; width:150px; height:150px; overflow:hidden; border:1px solid #ccc; border-radius:8px;">
-                <img src="' . htmlspecialchars($row['image_path']) . '" style="width: 150px; height: 150px; object-fit: cover; display: block;"><br>
+$result = $conn->query("SELECT * FROM images WHERE category='gallery-event'");
+while ($row = $result->fetch_assoc()) {
+    echo '<div style="display:inline-block; margin:10px; text-align:center; width:150px;">
+            <div style="width:150px; height:150px; overflow:hidden; border:1px solid #ccc; border-radius:8px;">
+                <img src="' . htmlspecialchars($row['image_path']) . '" style="width: 150px; height: 150px; object-fit: cover; display: block;">
+            </div>
+            <div style="margin-top: 5px;">
                 <form action="gallery_event_admin.php" method="post" style="display:inline;">
                     <button type="submit" name="edit" value="' . $row['id'] . '">Edit</button>
                 </form>
                 <form action="gallery_event_admin.php" method="post" onsubmit="return confirmDelete();" style="display:inline;">
                     <button type="submit" name="delete" value="' . $row['id'] . '">Delete</button>
                 </form>
-              </div>';
-    }
-    ?>
+            </div>
+          </div>';
+}
+?>
+
 </div>
 </body>
 </html>
