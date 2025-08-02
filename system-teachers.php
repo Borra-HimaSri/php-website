@@ -70,7 +70,7 @@ $result = $conn->query($sql);
     <div class="container px-0">
         <nav class="navbar navbar-light navbar-expand-xl py-0" >
             <a href="index.php" class="navbar-brand d-flex align-items-center">
-                <img src="img/logo1.png" alt="logo" style="height:65px; width:auto; margin-right:2px;">
+                <img src="img/logo.png" alt="logo" style="height:65px; width:auto; margin-right:2px;">
                 <h1 class="text-primary display-6" style="margin-bottom: 0;">Star<span class="text-secondary">kids</span></h1>
             </a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

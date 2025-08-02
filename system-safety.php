@@ -142,6 +142,7 @@
 </div>
 <script src="script.js"></script>
 <!-- Navbar End -->
+  
 
         <!-- Modal Search Start -->
         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -169,7 +170,7 @@
             <div class="container py-5">
                 <div class="row g-5 justify-content-center">
                     <div class="col-lg-7 col-md-12 text-center">
-                        <h1 class="mb-5 display-1 text-white">Facilities</h1>
+                        <h1 class="mb-5 display-1 text-white">Safety and Security</h1>
                         <h1 class="mb-5 display-1 text-white"></h1><br>
                         <br>
                     </div>
@@ -179,32 +180,108 @@
         <!-- Page Header End -->
 
 
-       
+     <!-- Service Start -->
+     <div class="container-fluid service py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <br>
+                <h1 class="mb-5 display-3">Thanks To Get Started With Our School</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-gamepad fa-6x text-primary"></i></div>
+                                <a href="system-activities.php" class="h4"> Our Activities</a>
+                                <p class="my-3">We offer engaging and interactive activities like storytelling and arts and crafts to spark creativity and teamwork in a fun learning environment.
+
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-sort-alpha-down fa-6x text-primary"></i></div>
+                                <a href="system-curriculum.php" class="h4">Our Curicullum</a>
+                                <p class="my-3">Our play-based curriculum promotes holistic development, focusing on language, motor skills, and social interaction for future readiness.
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-users fa-6x text-primary"></i></div>
+                                <a href="system-teachers.php" class="h4">Our Teachers</a>
+                                <p class="my-3">Our dedicated teachers create a nurturing environment, encouraging curiosity and individual exploration at every child's pace.
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-user-nurse fa-6x text-primary"></i></div>
+                                <a href="system-safety.php" class="h4">Our Safety and Security</a>
+                                <p class="my-3">We prioritize safety with monitored access and trained staff, ensuring a secure environment for all children.
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
         <div class="container-fluid program py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Facilities</h4>
-                    <h1 class="mb-5 display-3">World-Class Facilities for Your Child’s Growth</h1>
+                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Safety and Security</h4>
+                    <h1 class="mb-5 display-3">Where Safety Meets Learning Excellence</h1>
                 </div>
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-6 col-xl-8 wow fadeIn" data-wow-delay="0.1s">
-                        <h4 class="text-left"><br>
-                         Our Exceptional Facilities:</h4><br>
-                        <p>At Smartkids, we offer a range of thoughtfully designed facilities to support each child’s growth and development. From vibrant classrooms and engaging activity areas to safe play zones and multimedia spaces, every area is crafted to make learning exciting and meaningful. Our facilities create a warm, inviting environment where children feel inspired, confident, and ready to explore, helping them build skills, friendships, and a lifelong love for learning.</p>
-                        <h5>🌈 Key Features:</h5><br>
-                        <h6>🌈 Bright and Inspiring Classrooms</h6>
-                        <p>At SMARTKIDS, our classrooms are thoughtfully designed to create an engaging learning space filled with warmth and creativity. Every wall is adorned with vibrant colors, interactive posters, and educational visuals that captivate young minds. With child-friendly furniture arranged for easy access, each classroom becomes a nurturing space where children feel comfortable, curious, and excited to learn. Soft boards and whiteboards allow for dynamic, interactive lessons and playful reminders.</p>
-                        <h6>🌈 Creative Activity Zone</h6>
-                        <p>Our spacious Activity Zone is where learning truly comes to life. Here, children explore concepts through a fun, play-based approach. From role-playing areas like the Doll House and Pet Farm to artistic pursuits like Painting, Storytelling, and Reading, every activity is an adventure. Our “Mini Marketplace” setup introduces basic math skills in a playful setting, allowing children to experience buying, selling, and counting. Each activity is crafted to support cognitive, social, and motor skills in a way that feels like pure fun.</p>
-                        <h6>🌈 Celebration and Event Space</h6>
-                        <p>At SMARTKIDS, every child is a star! Our mini stage and celebration area bring joyful events to life, creating a platform for children to showcase their talents and enjoy special moments. Monthly birthday celebrations, cultural festivals, and family events bring parents into the SMARTKIDS community. With lights, music, and a supportive audience, every child gains confidence and the joy of performing.</p>
-                        <h6>🌈 Safe and Fun Play Area</h6>
-                        <p>Our outdoor Play Area is a world of excitement designed to nurture physical growth and psychomotor skills. Featuring swings, slides, bouncy castles, and mini trains, it’s a space for children to run, climb, and explore safely. Special events like puppet shows, magic acts, and animal character shows spark wonder and laughter, creating memories that last a lifetime.</p>
-                        <h6>🌈 Interactive Learning Wall</h6>
-                        <p>At SMARTKIDS, we have a wall dedicated to interactive learning. It features educational posters, puzzles, and tactile activities that children can engage with. This allows them to explore basic concepts such as numbers, letters, and shapes in a fun and tactile way..</p>
-                        <h6>🌈 Parent Communication Corner</h6>
-                        <p> We have a space where parents can easily access updates, newsletters, and important notices. This ensures parents are always informed about their child’s progress and upcoming events, fostering an open and transparent line of communication between home and school.</p>
+
+                        <h5><b>About Our Safety and Security at Smart Kids:</b></h5><br>
+                        <p>At <b>Smart Kids</b>, the safety, security, and well-being of our children are our top priorities. We have implemented a range of measures to ensure a safe and secure learning environment where parents can feel confident that their children are protected and cared for.</p>
                         
+                        <h5>🌈 <b>Comprehensive Security Measures</b></h5>
+                        <p>Our school is fully enclosed with secure fences and locked gates, ensuring that only authorized personnel can access the premises. We also utilize photo identification for all visitors, monitor the premises with CCTV cameras, and maintain a vigilant approach to safety at all times.</p>
+                        
+                        <h5>🌈 <b>Strict Pickup Protocols</b></h5>
+                        <p>To ensure additional security, only designated and authorized individuals, as specified by parents, are allowed to pick up children after school hours, providing peace of mind and an extra layer of safety.</p>
+                        
+                        <h5>🌈 <b>Fire Safety and Emergency Protocols</b></h5>
+                        <p>Our school is equipped with essential fire safety measures, including smoke detectors, fire extinguishers, capped electrical outlets, and clearly marked escape routes. We ensure full compliance with fire safety regulations to protect the children in all circumstances.</p>
+                        
+                        <h5>🌈 <b>Uncompromised Sanitation and Hygiene</b></h5>
+                        <p>We maintain stringent cleanliness and hygiene practices throughout the school. Our sanitation team is trained to disinfect classrooms, restrooms, and play areas regularly, ensuring a germ-free environment. We also teach children the importance of washing their hands after play, meals, and bathroom visits.</p>
+                    
+                        <h5>🌈 <b>Health Monitoring and Care</b></h5>
+                        <p>Our dedicated teachers conduct daily health checks, including temperature monitoring and hand sanitization, to ensure children are in optimal health. Any signs of illness are promptly communicated with parents for a collaborative approach to their child’s well-being.</p>
+                        
+                        <h5>🌈 <b>Medicine and Water Safety</b></h5>
+                        <p>All medications are securely stored and administered only with a doctor’s prescription. We also ensure that all drinking water is purified and safe for consumption, offering the children access to clean water throughout the day.</p>
+                       
+                        <h5>🌈 <b>Trained and Caring Staff</b></h5>
+                        <p>All our staff members undergo thorough medical checkups and first aid training to ensure they are prepared to handle any situation. We also provide ongoing training to our team, keeping them updated with the latest practices in child care and safety.</p>
+                    
+                        <h5>🌈 <b>Choose Smart Kids for a Safe and Nurturing Environment!</b></h5>
+                        <p>At <b>Smart Kids</b>, we go above and beyond to ensure a safe, healthy, and secure environment where children can thrive. Join us for an education where safety is as important as learning, and where every child is cared for with the utmost attention and care.</p>
+                    
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
@@ -213,25 +290,18 @@
                                     <img src="img/program-1.jpg" class="img-fluid w-100" alt="Image 1">
                                 </div> 
                             </div>            
-                        </div>
+                        </div><br><br><br>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
                                     <img src="img/program-2.jpg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
-                        </div>
+                        </div><br><br><br>
                         <div class="program-item rounded" style="margin-top: 20px;">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-2.jpg" class="img-fluid w-100" alt="Image 2">
-                                </div> 
-                            </div>            
-                        </div>
-                        <div class="program-item rounded" style="margin-top: 20px;">
-                            <div class="program-img position-relative">
-                                <div class="overflow-hidden img-border-radius">
-                                    <img src="img/program-3.jpg" class="img-fluid w-100" alt="Image 3">
+                                    <img src="img/program-3.jpg" class="img-fluid w-100" alt="Image 2">
                                 </div> 
                             </div>            
                         </div>
@@ -242,7 +312,8 @@
         
         
         
-       <!-- Footer Start -->
+        
+        <!-- Footer Start -->
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">

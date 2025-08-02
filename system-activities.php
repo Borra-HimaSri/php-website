@@ -193,7 +193,7 @@
                     <div class="service-content d-flex align-items-center justify-content-center p-4">
                         <div class="service-content-inner">
                             <div class="p-4"><i class="fas fa-gamepad fa-6x text-primary"></i></div>
-                            <a href="system-activities.html" class="h4"> Our Activities</a>
+                            <a href="system-activities.php" class="h4"> Our Activities</a>
                             <p class="my-3">We offer engaging and interactive activities like storytelling and arts and crafts to spark creativity and teamwork in a fun learning environment.
 
                             </p>
@@ -207,7 +207,7 @@
                     <div class="service-content d-flex align-items-center justify-content-center p-4">
                         <div class="service-content-inner">
                             <div class="p-4"><i class="fas fa-sort-alpha-down fa-6x text-primary"></i></div>
-                            <a href="system-curriculum.html" class="h4">Our Curicullum</a>
+                            <a href="system-curriculum.php" class="h4">Our Curicullum</a>
                             <p class="my-3">Our play-based curriculum promotes holistic development, focusing on language, motor skills, and social interaction for future readiness.
                             </p>
                            
@@ -220,7 +220,7 @@
                     <div class="service-content d-flex align-items-center justify-content-center p-4">
                         <div class="service-content-inner">
                             <div class="p-4"><i class="fas fa-users fa-6x text-primary"></i></div>
-                            <a href="system-teachers.html" class="h4">Our Teachers</a>
+                            <a href="system-teachers.php" class="h4">Our Teachers</a>
                             <p class="my-3">Our dedicated teachers create a nurturing environment, encouraging curiosity and individual exploration at every child's pace.
                             </p>
                             
@@ -233,7 +233,7 @@
                     <div class="service-content d-flex align-items-center justify-content-center p-4">
                         <div class="service-content-inner">
                             <div class="p-4"><i class="fas fa-user-nurse fa-6x text-primary"></i></div>
-                            <a href="system-safety.html" class="h4">Our Safety and Security</a>
+                            <a href="system-safety.php" class="h4">Our Safety and Security</a>
                             <p class="my-3">We prioritize safety with monitored access and trained staff, ensuring a secure environment for all children.
                             </p>
                            
