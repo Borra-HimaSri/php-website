@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
 
 // Create database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+
 
 // Check for connection error
 if ($conn->connect_error) {
