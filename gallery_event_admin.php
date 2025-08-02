@@ -226,12 +226,12 @@ if (isset($_POST['update'])) {
 <hr>
 
 <div class="gallery-container">
-    <?php
+ <?php
 $result = $conn->query("SELECT * FROM images WHERE category='gallery-event'");
 while ($row = $result->fetch_assoc()) {
     echo '<div style="display:inline-block; margin:10px; text-align:center; width:150px;">
-            <div style="width:150px; height:150px; overflow:hidden; border:1px solid #ccc; border-radius:8px;">
-                <img src="' . htmlspecialchars($row['image_path']) . '" style="width: 150px; height: 150px; object-fit: cover; display: block;">
+            <div style="width:150px; height:150px; overflow:hidden; border:1px solid #ccc; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+                <img src="' . htmlspecialchars($row['image_path']) . '" style="width: 120px; height: 120px; object-fit: cover; display: block;">
             </div>
             <div style="margin-top: 5px;">
                 <form action="gallery_event_admin.php" method="post" style="display:inline;">
@@ -244,6 +244,7 @@ while ($row = $result->fetch_assoc()) {
           </div>';
 }
 ?>
+
 
 </div>
 </body>
