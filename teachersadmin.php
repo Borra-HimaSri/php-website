@@ -66,6 +66,7 @@ $result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
 <html>
 <head>
     <title>Manage Team</title>
+     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/gallery.css">
     <style>
         body { font-family: Arial; margin: 30px; }

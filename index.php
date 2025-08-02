@@ -19,6 +19,7 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
         <meta content="" name="description">
 
         <!-- Google Web Fonts -->
+        <link rel="icon" type="image/png" href="img/logo.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
