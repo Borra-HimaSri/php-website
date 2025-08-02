@@ -282,6 +282,12 @@
                         <p>Experience the magic of learning at Smart Kids! With an emphasis on safety, creativity, and a passion for discovery, we provide an environment where every child can thrive. Come and join us on a journey of growth, fun, and lifelong memories.</p>
                     
                     </div>
+                                        <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">

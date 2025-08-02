@@ -308,6 +308,11 @@
                     
                         <p>Join us at <b>Smart Kids</b>, where education meets enchantment, and every day is a celebration of discovery and growth. Our Nursery program is not just a school; it’s a captivating experience that sparks a lifelong love for learning. Together, let’s create a future where every child thrives in the joy of knowledge and imagination!</p>
                     </div>
+                                                           <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">

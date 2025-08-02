@@ -310,6 +310,11 @@
                     
                         <p>Join us at our Playgroup at <b>Smart Kids</b>, where education is a joyful journey, and every step is met with warmth, fun, and a touch of magic. Together, let’s nurture the love of learning and set the stage for a lifetime of curiosity and success!</p>
                     </div>
+                                                           <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">

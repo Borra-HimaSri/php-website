@@ -208,6 +208,11 @@
                     
                         <p>Join us at <b>Smart Kids</b>, where education is an exploration, and every child is a star in their own journey. Our Lower KG program is not just a curriculum; it’s a celebration of potential, curiosity, and the joy of learning. Together, let’s create a foundation for success and a future where your child’s abilities truly blossom!</p>
                     </div>
+                                                           <style>
+    .program-img img {
+        height: 300px;
+        object-fit: cover;
+    }
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
