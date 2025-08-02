@@ -1,22 +1,25 @@
 <?php
 ob_start();
-include 'admin_common.php'; // Make sure this has the DB connection as $conn
+include 'admin_common.php';
 
 require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 use Cloudinary\Cloudinary;
 use Cloudinary\Configuration\Configuration;
 
-
 Configuration::instance([
     'cloud' => [
-        'cloud_name' => 'dyvs4ugkk',
-        'api_key'    => '567619791139426',
-        'api_secret' => 'ZmSo5zZoMgkr7LcGz_QHPRm7vVI'
+        'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'],
+        'api_key'    => $_ENV['CLOUDINARY_API_KEY'],
+        'api_secret' => $_ENV['CLOUDINARY_API_SECRET'],
     ],
     'url' => ['secure' => true]
 ]);
 
-$cloudinary = new Cloudinary(Configuration::instance());
+$cloudinary = new Cloudinary();
+
 
 
 
@@ -48,8 +51,27 @@ if (isset($_POST['delete'])) {
     $stmt->bind_param("i", $imageId);
     $stmt->execute();
     $stmt->bind_result($imagePathToDelete);
+    
     if ($stmt->fetch()) {
         $stmt->close();
+
+        // Extract public_id from URL
+        $parts = explode("/", parse_url($imagePathToDelete, PHP_URL_PATH));
+        $filenameWithExt = end($parts); // e.g., image.jpg
+        $publicId = pathinfo($filenameWithExt, PATHINFO_FILENAME); // remove .jpg
+
+        // Optional: include folder if used in upload
+        $folder = 'smartkids/gallery/';
+        $fullPublicId = $folder . $publicId;
+
+        // Delete from Cloudinary
+        try {
+            $cloudinary->uploadApi()->destroy($fullPublicId);
+        } catch (Exception $e) {
+            echo "Cloudinary delete failed: " . $e->getMessage();
+        }
+
+        // Delete from DB
         $stmtDel = $conn->prepare("DELETE FROM images WHERE id = ?");
         $stmtDel->bind_param("i", $imageId);
         $stmtDel->execute();
@@ -58,6 +80,7 @@ if (isset($_POST['delete'])) {
         $stmt->close();
     }
 }
+
 ?>
 
 <!DOCTYPE html>
