@@ -92,7 +92,10 @@ $result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
     <?php while ($row = $result->fetch_assoc()): ?>
     <tr>
         <td><?= $row['id'] ?></td>
-        <td><img src="<?= htmlspecialchars($row['image']) ?>" alt=""></td>
+        <td>
+  <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" style="height:60px; width:60px; object-fit:cover; border-radius: 50%;">
+</td>
+
         <td><?= htmlspecialchars($row['name']) ?></td>
         <td><a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Delete this teacher?')">Delete</a></td>
     </tr>
