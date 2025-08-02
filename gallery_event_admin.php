@@ -8,6 +8,8 @@ ob_start();
 
 include 'admin_common.php';
 require 'vendor/autoload.php'; // Cloudinary autoload
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 use Cloudinary\Configuration\Configuration;
 use Cloudinary\Api\Upload\UploadApi;
@@ -15,9 +17,9 @@ use Cloudinary\Api\Upload\UploadApi;
 // Cloudinary config
 Configuration::instance([
     'cloud' => [
-        'cloud_name' => 'dyvs4ugkk',
-        'api_key'    => '567619791139426',
-        'api_secret' => 'ZmSo5zZoMgkr7LcGz_QHPRm7vVI',
+        'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'],
+        'api_key'    => $_ENV['CLOUDINARY_API_KEY'],
+        'api_secret' => $_ENV['CLOUDINARY_API_SECRET'],
     ],
     'url' => ['secure' => true]
 ]);
@@ -55,27 +57,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    if (isset($_POST['delete'])) {
+if (isset($_POST['delete'])) {
     $imageId = (int)$_POST['delete'];
 
     $stmt = $conn->prepare("SELECT image_path FROM images WHERE id = ?");
     $stmt->bind_param("i", $imageId);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->bind_result($imagePathToDelete);
 
-    if ($result->num_rows) {
+    if ($stmt->fetch()) {
         $stmt->close();
-        $stmt = $conn->prepare("DELETE FROM images WHERE id = ?");
-        $stmt->bind_param("i", $imageId);
-        $stmt->execute();
-        $stmt->close();
+
+        // Extract public ID
+        $parts = explode("/", parse_url($imagePathToDelete, PHP_URL_PATH));
+        $filename = pathinfo(end($parts), PATHINFO_FILENAME);
+        $folder = 'events/';
+        $publicId = $folder . $filename;
+
+        try {
+            (new UploadApi())->destroy($publicId);
+        } catch (Exception $e) {
+            echo "Cloudinary delete failed: " . $e->getMessage();
+        }
+
+        // Delete from DB
+        $stmtDel = $conn->prepare("DELETE FROM images WHERE id = ?");
+        $stmtDel->bind_param("i", $imageId);
+        $stmtDel->execute();
+        $stmtDel->close();
     } else {
-        // Don't call $stmt->close() again if already closed
+        $stmt->close();
     }
 
     header("Location: gallery_event_admin.php");
     exit;
 }
+
 
 
 if (isset($_POST['edit'])) {
