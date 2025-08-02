@@ -385,7 +385,8 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
             <?php while ($row = $result->fetch_assoc()): ?>
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="team-item border border-primary img-border-radius overflow-hidden">
-                        <img src="uploads/<?= htmlspecialchars($row['image']) ?>" class="img-fluid w-100" alt="<?= htmlspecialchars($row['name']) ?>" style="height: 250px; object-fit: contain; object-position: center;">
+<img src="<?= htmlspecialchars($row['image']) ?>" class="img-fluid w-100" alt="<?= htmlspecialchars($row['name']) ?>" style="height: 250px; object-fit: contain; object-position: center;">
+
                         <div class="team-content text-center py-3">
                             <h4 class="text-primary"><?= htmlspecialchars($row['name']) ?></h4>
                         </div>
