@@ -75,6 +75,12 @@ $result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
     </style>
 </head>
 <body>
+<div class="admin-nav">
+    <a href="gallery_photo_admin.php"><button>Gallery</button></a>
+    <a href="gallery_event_admin.php"><button>Events</button></a>
+    <a href="teachersadmin.php"><button>Teacher</button></a>
+    <a href="admin.php"><button>Admin Page</button></a>
+</div>
 
 <h2>Add Teacher</h2>
 <form method="POST" enctype="multipart/form-data">

@@ -76,10 +76,11 @@ if (isset($_POST['delete'])) {
 <body>
 <div class="admin-nav">
     <a href="gallery_photo_admin.php"><button>Gallery</button></a>
-    <a href="gallery_event_admin.php"><button> Events</button></a>
-    <a href="gallery_latest_admin.php"><button>News</button></a>
+    <a href="gallery_event_admin.php"><button>Events</button></a>
+    <a href="teachersadmin.php"><button>Teacher</button></a>
     <a href="admin.php"><button>Admin Page</button></a>
 </div>
+
 
 <h2>Upload Photos to the Gallery Page</h2>
 <form action="gallery_photo_admin.php" method="post" enctype="multipart/form-data">
