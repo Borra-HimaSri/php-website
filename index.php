@@ -64,7 +64,7 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
             </div>
             <div class="top-link pe-2">
                 <a href="https://www.instagram.com/smartkids_369" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>
-                <a href="https://www.youtube.com/@Bannu369" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-youtube text-secondary"></i></a><br>
+                <a href="https://www.youtube.com/@Bannu369" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-youtube text-secondary"></i></a>
                 <a href="https://www.facebook.com/share/156KqyyojT/" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
             </div>
         </div>
