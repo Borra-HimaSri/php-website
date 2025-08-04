@@ -58,15 +58,14 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
         <div class="d-flex justify-content-between">
             <div class="top-info ps-2">
                 <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="https://maps.app.goo.gl/5MeZYzAqRGHyQd8g8" class="text-white">
-                Bank Colony, 3rd Street, Bhimavaram</a></small>
+                 D, No 19-17-10/1, Main Rd, Bank Colony, Bhimavaram, Andhra Pradesh 534201</a></small>
                 <small class="me-3"> <i class="fas fa-envelope me-2 text-secondary"></i><a href="mailto:rajesh.yerram404@gmail.com" class="text-white">rajesh.yerram404@gmail.com</a></small>
 
             </div>
             <div class="top-link pe-2">
-                <a href="https://www.facebook.com/groups/336890579728950/posts/8878320018919254/" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
-                
-                <!--<a href="" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>-->
+                <a href="https://www.instagram.com/smartkids_369" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>
                 <a href="https://www.youtube.com/@Bannu369" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-youtube text-secondary"></i></a>
+                <a href="https://www.facebook.com/share/156KqyyojT/" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
             </div>
         </div>
     </div>
@@ -581,7 +580,7 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
     <div class="footer-item">
         <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">LOCATION</h4>
         <div class="d-flex flex-column align-items-start">
-            <a href="https://maps.app.goo.gl/5MeZYzAqRGHyQd8g8" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> Bank Colony 3rd Street Bhimavaram</a>
+            <a href="https://maps.app.goo.gl/5MeZYzAqRGHyQd8g8" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i>  D, No 19-17-10/1, Main Rd, Bank Colony, Bhimavaram, Andhra Pradesh 534201</a>
             <a href="tel:+91 9949153404" class="text-start rounded-0 text-body mb-4"><i class="fa fa-phone-alt text-primary me-2"></i>+91 9949153404</a>
             
 
