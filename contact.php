@@ -246,7 +246,7 @@ if (isset($_SESSION['status'])) {
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="border border-primary h-100 rounded">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4333.063573448105!2d81.52477320174445!3d16.53577885721853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37d3806831af6b%3A0xbb3b18887142ea7a!2sStar%20Kids%20Activity%20Centre%20%26%20play%20School!5e0!3m2!1sen!2sin!4v1730469624531!5m2!1sen!2sin"
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d27694.00189966288!2d81.5108497!3d16.5079874!3m2!1i1024!2i768!4f13.1!2m1!1ssmart%20kids!5e1!3m2!1sen!2sin!4v1754326993563!5m2!1sen!2sin"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
                             class="w-100 h-100 rounded"></iframe>
                     </div>
