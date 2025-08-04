@@ -86,16 +86,16 @@ if ($conn->connect_error) {
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="about.php" class="dropdown-item">About Starkids</a>
+                                        <a href="about.php" class="dropdown-item">About Smartkids</a>
                                         <a href="about-mission.php" class="dropdown-item">Our Mission and vision</a>
                                     </div>
                                 </div>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our System</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="system-curriculum.php" class="dropdown-item">Starkids Curriculum</a>
+                                        <a href="system-curriculum.php" class="dropdown-item">Smartkids Curriculum</a>
                                         <a href="system-safety.php" class="dropdown-item">Safety and Security</a>
-                                        <a href="system-activities.php" class="dropdown-item">Activities at Starkids</a>
+                                        <a href="system-activities.php" class="dropdown-item">Activities at SmartKids</a>
                                         <a href="system-teachers.php" class="dropdown-item">Our Teachers</a>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ if ($conn->connect_error) {
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Parents</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="parents-whystarkids.php" class="dropdown-item">Why starkids</a>
+                                        <a href="parents-whysmartkids.php" class="dropdown-item">Why smartkidskids</a>
                                         <a href="parents-parents.php" class="dropdown-item">Parents as Partners</a>
                                         <a href="parents-facilities.php" class="dropdown-item">Facilities</a>
                                         <a href="parents-admission.php" class="dropdown-item">Admission Information</a>
@@ -250,7 +250,7 @@ if ($conn->connect_error) {
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="footer-item">
                             <h2 class="fw-bold mb-3"><span class="text-primary mb-0">Star</span><span class="text-secondary">Kids</span></h2>
-                            <p class="mb-4">StarKids Preschool focuses on early childhood development through play-based learning.It provides a safe and nurturing environment for young learners. Our goal is to prepare children for a bright future with confidence and creativity.</p>
+                            <p class="mb-4">SmartKids Preschool focuses on early childhood development through play-based learning.It provides a safe and nurturing environment for young learners. Our goal is to prepare children for a bright future with confidence and creativity.</p>
                             
                         </div>
                     </div>
@@ -357,7 +357,7 @@ if ($conn->connect_error) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><i class="fas fa-copyright text-light me-2"></i> <span style="color:  pink;">copyrights.Starkids.in</span></a>, All right reserved.</span>
+                        <span class="text-light"><i class="fas fa-copyright text-light me-2"></i> <span style="color:  pink;">copyrights.Smartkids.in</span></a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->

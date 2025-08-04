@@ -109,7 +109,7 @@ $result = $conn->query($sql);
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Parents</a>
                                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <a href="parents-whystarkids.php" class="dropdown-item">WhySmartkids</a>
+                                        <a href="parents-whysmartkids.php" class="dropdown-item">WhySmartkids</a>
                                         <a href="parents-parents.php" class="dropdown-item">Parents as Partners</a>
                                         <a href="parents-facilities.php" class="dropdown-item">Facilities</a>
                                         <a href="parents-admission.php" class="dropdown-item">Admission Information</a>
