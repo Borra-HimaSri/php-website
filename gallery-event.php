@@ -62,10 +62,9 @@ if ($conn->connect_error) {
 
             </div>
             <div class="top-link pe-2">
-                <a href="https://www.facebook.com/groups/336890579728950/posts/8878320018919254/" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
-                
-                <!--<a href="" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>-->
-                <a href="https://www.youtube.com/@Bannu369" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-youtube text-secondary"></i></a>
+                               <a href="https://www.instagram.com/smartkids_369" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>
+                <a href="https://www.youtube.com/@Bannu369" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-youtube text-secondary"></i></a>
+                <a href="https://www.facebook.com/share/156KqyyojT/" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
             </div>
         </div>
     </div>
@@ -282,10 +281,9 @@ if ($conn->connect_error) {
 
 
             <div class="footer-icon d-flex">
-                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="https://www.facebook.com/groups/336890579728950/posts/8878320018919254/"><i class="fab fa-facebook-f"></i></a>
-
-                <!--<a href="#" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i class="fab fa-instagram"></i></a>-->
-                <a href="https://www.youtube.com/@Bannu369" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.instagram.com/smartkids_369" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>
+                <a href="https://www.youtube.com/@Bannu369" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-youtube text-secondary"></i></a>
+                <a href="https://www.facebook.com/share/156KqyyojT/" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
 
             </div>
         </div>
