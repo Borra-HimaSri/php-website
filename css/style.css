@@ -245,7 +245,7 @@ h6,
 /* Hero Section Styling */
 .hero-header {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/main.jpeg) center center / cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/hero-img.png) center center / cover no-repeat;
     padding: 50px 0;
     overflow: hidden;
 }
