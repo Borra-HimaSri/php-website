@@ -1,8 +1,11 @@
 <?php
 include 'db.php';
+
 $sql = "SELECT * FROM teachers ORDER BY id ASC";
-$result = $conn->query($sql);
+$stmt = $pdo->query($sql);
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -261,21 +264,21 @@ $result = $conn->query($sql);
             <h1 class="mb-5 display-3">Meet With Our Expert Teacher</h1>
         </div>
         <div class="row g-5 justify-content-center">
-            <?php if ($result->num_rows > 0): ?>
-                <?php while($row = $result->fetch_assoc()): ?>
-                    <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="team-item border border-primary img-border-radius overflow-hidden">
-                            <img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-fluid w-100" alt="<?php echo htmlspecialchars($row['name']); ?>" style="height: 250px; object-fit: contain; object-position: center;">
-                            <div class="team-content text-center py-3">
-                                <h4 class="text-primary"><?php echo htmlspecialchars($row['name']); ?></h4>
-                                <p class="text-muted mb-2"></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <p class="text-center">No team members found.</p>
-            <?php endif; ?>
+           <?php if (!empty($result)): ?>
+    <?php foreach ($result as $row): ?>
+        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
+            <div class="team-item border border-primary img-border-radius overflow-hidden">
+                <img src="<?php echo htmlspecialchars($row['image']); ?>" class="img-fluid w-100" alt="<?php echo htmlspecialchars($row['name']); ?>" style="height: 250px; object-fit: contain; object-position: center;">
+                <div class="team-content text-center py-3">
+                    <h4 class="text-primary"><?php echo htmlspecialchars($row['name']); ?></h4>
+                    <p class="text-muted mb-2"></p>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p class="text-center">No team members found.</p>
+<?php endif; ?>
         </div>
     </div>
 </div>

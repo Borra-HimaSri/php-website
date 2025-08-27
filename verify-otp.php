@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// Redirect if OTP was not sent
 if (!isset($_SESSION['otp_sent']) || !isset($_SESSION['email'])) {
     header("Location: forgot-password.php");
     exit;
@@ -14,20 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['verify_otp'])) {
         $message = "Invalid OTP.";
     } else {
         $_SESSION['otp_verified'] = true;
-
         header("Location: reset-password.php"); // Redirect to reset password
         exit;
     }
 }
-?>
 
+// Include PostgreSQL connection in case needed
+require 'db.php'; // $pdo available for PostgreSQL queries
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify OTP</title>
-     <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link href="css/verify.css" rel="stylesheet">
 </head>
 <body>
@@ -44,5 +47,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['verify_otp'])) {
         </form>
     </div>
 </body>
-
 </html>

@@ -1,14 +1,10 @@
 <?php 
-include 'db.php';
+include 'db.php'; // PostgreSQL PDO connection
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Database connection
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// $conn->connect_error check removed since we're using PDO
 
 $message = '';
 
@@ -19,24 +15,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_otp'])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message = 'Invalid email format.';
     } else {
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        try {
+            // Replace MySQLi prepare/execute with PDO
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($result->num_rows > 0) {
-            $_SESSION['otp'] = rand(100000, 999999);
-            $_SESSION['email'] = $email;
-            $_SESSION['otp_sent'] = true;
-            session_regenerate_id(true);
-        } else {
-            $message = 'Email address not found.';
+            if (count($result) > 0) {
+                $_SESSION['otp'] = rand(100000, 999999);
+                $_SESSION['email'] = $email;
+                $_SESSION['otp_sent'] = true;
+                session_regenerate_id(true);
+            } else {
+                $message = 'Email address not found.';
+            }
+        } catch (PDOException $e) {
+            $message = 'Database error: ' . $e->getMessage();
         }
     }
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -45,32 +44,26 @@ $conn->close();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forgot Password</title>
-   <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="icon" type="image/png" href="img/logo.png">
   <link href="css/forget.css" rel="stylesheet">
   
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     (function() {
-        emailjs.init("0IDgFmufkELwUUb06"); // ✅ Replace with your actual public key
+        emailjs.init("0IDgFmufkELwUUb06");
     })();
 
     function sendOTP() {
-        // Fetch session values from PHP
         var email = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
         var otp = "<?php echo isset($_SESSION['otp']) ? $_SESSION['otp'] : ''; ?>";
 
-        // Validate that email and OTP are present
         if (!email || !otp) {
             alert("Email or OTP is missing. Cannot send email.");
             return;
         }
 
-        console.log("EmailJS payload:", {
-            from_name: "MySelf",
-            reply_to: email,
-            otp: otp
-        });
+        console.log("EmailJS payload:", {from_name: "MySelf", reply_to: email, otp: otp});
 
         emailjs.send("service_ovwfmpx", "template_ht2sxdh", {
             from_name: "MySelf",
@@ -78,7 +71,7 @@ $conn->close();
             otp: otp
         }).then(function(response) {
             alert("OTP sent successfully!");
-            window.location.href = "verify-otp.php"; // ✅ Redirect after success
+            window.location.href = "verify-otp.php";
         }, function(error) {
             alert("Failed to send OTP. Check console.");
             console.error("EmailJS Error:", error);

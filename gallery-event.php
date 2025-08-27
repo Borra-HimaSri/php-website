@@ -1,11 +1,12 @@
 <?php 
-include 'db.php';
 
+include 'db.php'; // already has $pdo
 
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Optional: check connection
+if (!$pdo) {
+    die("Database connection failed.");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -196,37 +197,41 @@ if ($conn->connect_error) {
             <h1 class="mb-5 display-3">Our Upcoming Events</h1>
         </div>
         <div class="row g-5 justify-content-center">
-            <?php
-            $result = $conn->query("SELECT * FROM images WHERE category = 'gallery-event'");
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="events-item bg-primary rounded">
-                            <div class="events-inner position-relative">
-                                <div class="events-img overflow-hidden rounded-circle position-relative">
-                                    <img src="' . $row['image_path'] . '" class="img-fluid w-100 rounded-circle" alt="Event Image" style="height: 300px; width: 300px; object-fit: cover;">
-                                    <div class="event-overlay">
-                                        <a href="' . $row['image_path'] . '" data-lightbox="event-' . $row['id'] . '"><i class="fas fa-search-plus text-white fa-2x"></i></a>
-                                    </div>
-                                </div>
-                                <div class="px-4 py-2 bg-secondary text-white text-center events-rate">' . $row['event_date'] . '</div>
-                                <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
-                                    <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> ' . $row['event_time'] . '</small>
-                                    <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> ' . $row['event_location'] . '</small>
-                                </div>
-                            </div>
-                            <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
-                                <a href="#" class="h4">' . $row['event_name'] . '</a>
-                                <p class="mb-0 mt-3">' . $row['event_description'] . '</p>
-                            </div>
+           <?php
+$stmt = $pdo->prepare("SELECT * FROM images WHERE category = 'gallery-event'");
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (count($rows) > 0) {
+    foreach ($rows as $row) {
+        echo '
+        <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
+            <div class="events-item bg-primary rounded">
+                <div class="events-inner position-relative">
+                    <div class="events-img overflow-hidden rounded-circle position-relative">
+                        <img src="' . htmlspecialchars($row['image_path']) . '" class="img-fluid w-100 rounded-circle" alt="Event Image" style="height: 300px; width: 300px; object-fit: cover;">
+                        <div class="event-overlay">
+                            <a href="' . htmlspecialchars($row['image_path']) . '" data-lightbox="event-' . $row['id'] . '"><i class="fas fa-search-plus text-white fa-2x"></i></a>
                         </div>
-                    </div>';
-                }
-            } else {
-                echo '<p class="text-center">No upcoming events found.</p>';
-            }
-            ?>
+                    </div>
+                    <div class="px-4 py-2 bg-secondary text-white text-center events-rate">' . htmlspecialchars($row['event_date']) . '</div>
+                    <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
+                        <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> ' . htmlspecialchars($row['event_time']) . '</small>
+                        <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> ' . htmlspecialchars($row['event_location']) . '</small>
+                    </div>
+                </div>
+                <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
+                    <a href="#" class="h4">' . htmlspecialchars($row['event_name']) . '</a>
+                    <p class="mb-0 mt-3">' . htmlspecialchars($row['event_description']) . '</p>
+                </div>
+            </div>
+        </div>';
+    }
+} else {
+    echo '<p class="text-center">No upcoming events found.</p>';
+}
+?>
+
         </div>
     </div>
 </div>

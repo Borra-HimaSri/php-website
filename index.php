@@ -2,11 +2,20 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include 'db.php';
+include 'db.php'; // This now provides $pdo
+
 // Fetch all teachers
-$result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
-$imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event'");
+$stmt = $pdo->query("SELECT * FROM teachers ORDER BY id ASC");
+$teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch gallery-event images
+$stmt2 = $pdo->query("SELECT * FROM images WHERE category='gallery-event'");
+$images = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+// Example: print teachers
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +34,7 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
         <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
 
         <!-- Icon Font Stylesheet -->
+         
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -37,8 +47,8 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
         <link href="css/bootstrap.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="/css/mystyle.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/mystyle.css" rel="stylesheet">
         
 
     </head>
@@ -333,33 +343,34 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
             <h1 class="mb-5 display-3">Our  Events</h1>
         </div>
         <div class="row g-5 justify-content-center">
-            <?php if ($imagesResult->num_rows > 0): ?>
-                <?php while ($row = $imagesResult->fetch_assoc()): ?>
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="events-item bg-primary rounded">
-                            <div class="events-inner position-relative">
-                                <div class="events-img overflow-hidden rounded-circle position-relative">
-                                    <img src="<?= $row['image_path'] ?>" class="img-fluid w-100 rounded-circle" alt="Event Image" style="height: 300px; width: 300px; object-fit: cover;">
-                                    <div class="event-overlay">
-                                        <a href="<?= $row['image_path'] ?>" data-lightbox="event-<?= $row['id'] ?>"><i class="fas fa-search-plus text-white fa-2x"></i></a>
-                                    </div>
-                                </div>
-                                <div class="px-4 py-2 bg-secondary text-white text-center events-rate"><?= $row['event_date'] ?></div>
-                                <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
-                                    <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> <?= $row['event_time'] ?></small>
-                                    <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> <?= $row['event_location'] ?></small>
-                                </div>
-                            </div>
-                            <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
-                                <a href="#" class="h4"><?= $row['event_name'] ?></a>
-                                <p class="mb-0 mt-3"><?= $row['event_description'] ?></p>
-                            </div>
+           <?php if (!empty($images)): ?>
+    <?php foreach ($images as $row): ?>
+        <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
+            <div class="events-item bg-primary rounded">
+                <div class="events-inner position-relative">
+                    <div class="events-img overflow-hidden rounded-circle position-relative">
+                        <img src="<?= htmlspecialchars($row['image_path']) ?>" class="img-fluid w-100 rounded-circle" alt="Event Image" style="height: 300px; width: 300px; object-fit: cover;">
+                        <div class="event-overlay">
+                            <a href="<?= htmlspecialchars($row['image_path']) ?>" data-lightbox="event-<?= $row['id'] ?>"><i class="fas fa-search-plus text-white fa-2x"></i></a>
                         </div>
                     </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <p class="text-center">No upcoming events found.</p>
-            <?php endif; ?>
+                    <div class="px-4 py-2 bg-secondary text-white text-center events-rate"><?= htmlspecialchars($row['event_date']) ?></div>
+                    <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
+                        <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> <?= htmlspecialchars($row['event_time']) ?></small>
+                        <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> <?= htmlspecialchars($row['event_location']) ?></small>
+                    </div>
+                </div>
+                <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
+                    <a href="#" class="h4"><?= htmlspecialchars($row['event_name']) ?></a>
+                    <p class="mb-0 mt-3"><?= htmlspecialchars($row['event_description']) ?></p>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p class="text-center">No upcoming events found.</p>
+<?php endif; ?>
+
         </div>
     </div>
 </div>
@@ -382,7 +393,7 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
             <h1 class="mb-5 display-3">Meet With Our Expert Teacher</h1>
         </div>
         <div class="row g-5 justify-content-center">
-            <?php while ($row = $result->fetch_assoc()): ?>
+            <?php foreach ($teachers as $row): ?>
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="team-item border border-primary img-border-radius overflow-hidden">
 <img src="<?= htmlspecialchars($row['image']) ?>" class="img-fluid w-100" alt="<?= htmlspecialchars($row['name']) ?>" style="height: 250px; object-fit: contain; object-position: center;">
@@ -392,8 +403,9 @@ $imagesResult = $conn->query("SELECT * FROM images WHERE category='gallery-event
                         </div>
                     </div>
                 </div>
-            <?php endwhile; ?>
-        </div>
+            <?php endforeach; ?>
+
+        </div>  
     </div>
 </div>
 <!-- Team End -->

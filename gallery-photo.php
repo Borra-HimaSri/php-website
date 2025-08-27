@@ -1,10 +1,8 @@
-<?php 
-include 'db.php';
-
-
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+<?php
+include 'db.php'; // already has $pdo
+// Optional: check connection
+if (!$pdo) {
+    die("Database connection failed.");
 }
 ?>
 
@@ -37,8 +35,8 @@ if ($conn->connect_error) {
         <link href="css/bootstrap.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="/css/mystyle.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/mystyle.css" rel="stylesheet">
         
 
     </head>
@@ -200,24 +198,27 @@ if ($conn->connect_error) {
 
             
             <!-- Dynamically Fetched Images from Database -->
-            <?php
-            $result = $conn->query("SELECT * FROM images WHERE category = 'gallery-photo'"); // Change category as needed
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="blog-item rounded-bottom">
-                            <div class="blog-img overflow-hidden position-relative img-border-radius">
-                                <img src="' . $row['image_path'] . '" class="img-fluid w-100" alt="Uploaded Image" style="height: 300px; object-fit: cover;">
-                            </div>
-                        </div>
-                    </div>';
-                }
-            } else {
-                echo '<p class="text-center"></p>';
-            }
-            
-            ?>
+           <?php
+$stmt = $pdo->prepare("SELECT * FROM images WHERE category = 'gallery-photo'");
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (count($rows) > 0) {
+    foreach ($rows as $row) {
+        echo '
+        <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+            <div class="blog-item rounded-bottom">
+                <div class="blog-img overflow-hidden position-relative img-border-radius">
+                    <img src="' . htmlspecialchars($row['image_path']) . '" class="img-fluid w-100" alt="Uploaded Image" style="height: 300px; object-fit: cover;">
+                </div>
+            </div>
+        </div>';
+    }
+} else {
+    echo '<p class="text-center"></p>';
+}
+?>
+
         </div>
     </div>
 </div>

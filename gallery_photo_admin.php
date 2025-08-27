@@ -1,7 +1,6 @@
 <?php
 ob_start();
-include 'admin_common.php';
-
+include 'admin_common.php'; // $pdo is available
 require 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -18,51 +17,46 @@ Configuration::instance([
     'url' => ['secure' => true]
 ]);
 
-
 $cloudinary = new Cloudinary(Configuration::instance());
 
-
-
-
-
+// Upload Image
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     $category = 'gallery-photo';
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $upload = $cloudinary->uploadApi()->upload($_FILES['image']['tmp_name'], [
-            'folder' => 'smartkids/gallery'
-        ]);
-        $imageUrl = $upload['secure_url'];
+        try {
+            $upload = $cloudinary->uploadApi()->upload($_FILES['image']['tmp_name'], [
+                'folder' => 'smartkids/gallery'
+            ]);
+            $imageUrl = $upload['secure_url'];
 
-        $stmt = $conn->prepare("INSERT INTO images (image_path, category) VALUES (?, ?)");
-        $stmt->bind_param("ss", $imageUrl, $category);
-        if ($stmt->execute()) {
+            $stmt = $pdo->prepare("INSERT INTO images (image_path, category) VALUES (:image_path, :category)");
+            $stmt->execute([
+                ':image_path' => $imageUrl,
+                ':category' => $category
+            ]);
+
             header("Location: gallery_photo_admin.php");
             exit;
-        } else {
-            echo "Database insert failed!";
+        } catch (Exception $e) {
+            echo "Image upload error: " . $e->getMessage();
         }
-        $stmt->close();
     } else {
         echo "Image upload failed!";
     }
 }
 
+// Delete Image
 if (isset($_POST['delete'])) {
     $imageId = intval($_POST['delete']);
-    $stmt = $conn->prepare("SELECT image_path FROM images WHERE id = ?");
-    $stmt->bind_param("i", $imageId);
-    $stmt->execute();
-    $stmt->bind_result($imagePathToDelete);
-    
-    if ($stmt->fetch()) {
-        $stmt->close();
+    $stmt = $pdo->prepare("SELECT image_path FROM images WHERE id = :id");
+    $stmt->execute([':id' => $imageId]);
+    $imagePathToDelete = $stmt->fetchColumn();
 
-        // Extract public_id from URL
+    if ($imagePathToDelete) {
+        // Extract public_id
         $parts = explode("/", parse_url($imagePathToDelete, PHP_URL_PATH));
-        $filenameWithExt = end($parts); // e.g., image.jpg
-        $publicId = pathinfo($filenameWithExt, PATHINFO_FILENAME); // remove .jpg
-
-        // Optional: include folder if used in upload
+        $filenameWithExt = end($parts);
+        $publicId = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         $folder = 'smartkids/gallery/';
         $fullPublicId = $folder . $publicId;
 
@@ -74,15 +68,10 @@ if (isset($_POST['delete'])) {
         }
 
         // Delete from DB
-        $stmtDel = $conn->prepare("DELETE FROM images WHERE id = ?");
-        $stmtDel->bind_param("i", $imageId);
-        $stmtDel->execute();
-        $stmtDel->close();
-    } else {
-        $stmt->close();
+        $stmtDel = $pdo->prepare("DELETE FROM images WHERE id = :id");
+        $stmtDel->execute([':id' => $imageId]);
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +80,7 @@ if (isset($_POST['delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Gallery Photo</title>
-     <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/gallery.css">
     <script>
         function confirmDelete() {
@@ -107,7 +96,6 @@ if (isset($_POST['delete'])) {
     <a href="admin.php"><button>Admin Page</button></a>
 </div>
 
-
 <h2>Upload Photos to the Gallery Page</h2>
 <form action="gallery_photo_admin.php" method="post" enctype="multipart/form-data">
     <input type="file" name="image" required>
@@ -116,10 +104,10 @@ if (isset($_POST['delete'])) {
 
 <div class="gallery-container">
     <?php
-    $result = $conn->query("SELECT * FROM images WHERE category='gallery-photo'");
-    while ($row = $result->fetch_assoc()) {
+    $stmt = $pdo->query("SELECT * FROM images WHERE category='gallery-photo'");
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo '<div class="gallery-item">
-                <img src="' . $row['image_path'] . '" alt="Uploaded Image">
+                <img src="' . htmlspecialchars($row['image_path']) . '" alt="Uploaded Image">
                 <form action="gallery_photo_admin.php" method="post" onsubmit="return confirmDelete();">
                     <button type="submit" name="delete" value="' . $row['id'] . '">Delete</button>
                 </form>

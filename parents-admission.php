@@ -28,8 +28,9 @@
         <link href="css/bootstrap.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="/css/mystyle.css" rel="stylesheet">
+         <link href="css/style.css" rel="stylesheet">
+        <link href="css/mystyle.css" rel="stylesheet">
+        
         
 
     </head>

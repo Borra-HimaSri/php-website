@@ -1,6 +1,5 @@
-<?php 
+<?php
 include 'db.php';
-
 include 'admin_common.php';
 require 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -23,62 +22,80 @@ Configuration::instance([
     'url' => ['secure' => true]
 ]);
 
-// Upload logic
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Upload teacher
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_teacher'])) {
     $name = $_POST['name'];
-    
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $tmpFile = $_FILES["image"]["tmp_name"];
 
         try {
-            $uploadResult = (new UploadApi())->upload($tmpFile);
-            $imageUrl = $uploadResult['secure_url']; // use full Cloudinary URL
+            $uploadResult = (new UploadApi())->upload($tmpFile, [
+                'folder' => 'smartkids/teachers'
+            ]);
+            $imageUrl = $uploadResult['secure_url'];
 
-            // Insert name and image URL into DB
-            $stmt = $conn->prepare("INSERT INTO teachers (name, image) VALUES (?, ?)");
-            $stmt->bind_param("ss", $name, $imageUrl);
-            $stmt->execute();
-            $stmt->close();
+            // Insert into PostgreSQL
+            $stmt = $pdo->prepare("INSERT INTO teachers (name, image) VALUES (:name, :image)");
+            $stmt->execute([
+                ':name' => $name,
+                ':image' => $imageUrl
+            ]);
         } catch (Exception $e) {
             echo "<p style='color:red;'>Upload failed: " . $e->getMessage() . "</p>";
         }
     }
 }
 
-// Delete logic
+// Delete teacher
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
-    $stmt = $conn->prepare("SELECT image FROM teachers WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->bind_result($image);
-    $stmt->fetch();
-    $stmt->close();
 
-    $stmt = $conn->prepare("DELETE FROM teachers WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->close();
+    // Get image URL (optional, if you want to delete from Cloudinary)
+    $stmt = $pdo->prepare("SELECT image FROM teachers WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    $image = $stmt->fetchColumn();
+
+    // Delete from Cloudinary (optional)
+    if ($image) {
+        $parts = explode("/", parse_url($image, PHP_URL_PATH));
+        $filenameWithExt = end($parts);
+        $publicId = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $folder = 'smartkids/teachers/';
+        $fullPublicId = $folder . $publicId;
+
+        try {
+            (new UploadApi())->destroy($fullPublicId);
+        } catch (Exception $e) {
+            echo "<p style='color:red;'>Cloudinary delete failed: " . $e->getMessage() . "</p>";
+        }
+    }
+
+    // Delete from DB
+    $stmt = $pdo->prepare("DELETE FROM teachers WHERE id = :id");
+    $stmt->execute([':id' => $id]);
 }
 
-// Fetch teachers
-$result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
+// Fetch all teachers
+$result = $pdo->query("SELECT * FROM teachers ORDER BY id ASC");
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Manage Team</title>
-     <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Manage Teachers</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/gallery.css">
     <style>
         body { font-family: Arial; margin: 30px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-        img { height: 60px; }
+        .gallery-container { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+        .teacher-item { width: 100px; text-align: center; }
+        .teacher-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; }
     </style>
 </head>
 <body>
+
 <div class="admin-nav">
     <a href="gallery_photo_admin.php"><button>Gallery</button></a>
     <a href="gallery_event_admin.php"><button>Events</button></a>
@@ -90,22 +107,21 @@ $result = $conn->query("SELECT * FROM teachers ORDER BY id ASC");
 <form method="POST" enctype="multipart/form-data">
     <input type="text" name="name" placeholder="Teacher name" required>
     <input type="file" name="image" required>
-    <button type="submit">Add</button>
+    <button type="submit" name="add_teacher">Add</button>
 </form>
 
 <h2>All Teachers</h2>
-
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-    <?php while ($row = $result->fetch_assoc()): ?>
-        <div style="width: 100px; text-align: center;">
-            <img src="<?= htmlspecialchars($row['image']) ?>" alt="Teacher" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;"><br><br>
+<div class="gallery-container">
+    <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+        <div class="teacher-item">
+            <img src="<?= htmlspecialchars($row['image']) ?>" alt="Teacher">
+            <br><br>
             <a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Delete this teacher?')">
                 <button>Delete</button>
             </a>
         </div>
     <?php endwhile; ?>
 </div>
-
 
 </body>
 </html>

@@ -1,10 +1,10 @@
 <?php
 session_start();
+// Display status message if set
 if (isset($_SESSION['status'])) {
     echo "<p>{$_SESSION['status']}</p>";
     unset($_SESSION['status']); // Clear message after displaying
 }
-
 ?>
 
 <!DOCTYPE html>

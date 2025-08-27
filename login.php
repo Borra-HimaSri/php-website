@@ -1,14 +1,6 @@
 <?php
-include 'db.php';
-// Start session to store login status
+include 'db.php'; // make sure this sets up $pdo
 session_start();
-
-// Connect to the database
-
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $errorMessage = '';
 
@@ -16,16 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $inputPassword = $_POST['password'];
 
-    // Check if the user exists
-    $sql = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        // Verify password using password_verify()
+    // Use prepared statement for security
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+    $stmt->execute(['email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
         if (password_verify($inputPassword, $user['password'])) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['user_email'] = $email;
-            header('Location: admin.php'); // Redirect to admin page
+            header('Location: admin.php');
             exit();
         } else {
             $errorMessage = 'Invalid password.';
@@ -34,9 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errorMessage = 'Invalid email address.';
     }
 }
-
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +34,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-     <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
