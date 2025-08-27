@@ -245,7 +245,15 @@ if (isset($_SESSION['status'])) {
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="border border-primary h-100 rounded">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20243.099885363914!2d81.49675338055218!3d16.536352779298138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37d2b0eaaaaaab%3A0x4a3829b8afc70aa8!2sSmart%20kids%20play%20school!5e1!3m2!1sen!2sin!4v1754329229303!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20243.099885363914!2d81.49675338055218!3d16.536352779298138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37d2b0eaaaaaab%3A0x4a3829b8afc70aa8!2sSmart%20kids%20play%20school!5e1!3m2!1sen!2sin!4v1754329229303!5m2!1sen!2sin"  
+        width="100%"  
+        height="100%"  
+        style="border:0; min-height:450px;"  
+        allowfullscreen=""  
+        loading="lazy"  
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
                     </div>
                 </div>
             </div>
