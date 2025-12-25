@@ -5,11 +5,11 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // PostgreSQL credentials from Render
-$host = "dpg-d3bcq73uibrs73fcbq20-a.oregon-postgres.render.com";
+$host = "dpg-d56k3j4hg0os73aoeu80-a";
 $port = "5432";
-$dbname = "smartkid";
-$user = "smartkid_user";
-$password = "QUBkVzVuq81bLpSGQwyaontTyk0rntul";
+$dbname = "smartkids";
+$user = "smartkids_user";
+$password = "cUZRuUGf1bRY8DWe0BWZSLEzvDq6gIoQ";
 
 try {
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password, [
